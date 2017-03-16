@@ -9,12 +9,14 @@ package top.blentle.foundation.review.jdkapi;
  * @since: 1.0
  */
 public class ArrayCopyUsage {
-
+    /**
+     * cover existed position
+     */
     public static void main(String[] args) {
-        String[] a = {"1","2","3","4"};
-        String[]b = {"5","6","7"};
-        System.arraycopy(a,2,b,0,a.length-2);
-        for(String s : b) {
+        String[] a = {"1", "2", "3", "4"};
+        String[] b = {"5", "6", "7"};
+        System.arraycopy(a, 2, b, 0, a.length - 2);
+        for (String s : b) {
             System.err.println(s);
         }
     }
