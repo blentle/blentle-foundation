@@ -17,7 +17,7 @@ public class MergeSort extends Data {
     public static void sort(Integer[] data, int leftIndex, int rightIndex) {
         if (leftIndex >= rightIndex)
             return;
-        int midIndex = (leftIndex + leftIndex) >>> 1;
+        int midIndex = (leftIndex + rightIndex) >>> 1;
         sort(data,leftIndex ,midIndex);
         sort(data,midIndex + 1, rightIndex);
         merge(data,leftIndex,midIndex,rightIndex);
@@ -38,6 +38,7 @@ public class MergeSort extends Data {
             tmp[left ++] = data[leftIndex ++];
         while(r1 <= rightIndex)
             tmp[left ++] = data[r1 ++];
+
         while(cIndex <= rightIndex) {
             data[cIndex]=tmp[cIndex];
             cIndex ++;
