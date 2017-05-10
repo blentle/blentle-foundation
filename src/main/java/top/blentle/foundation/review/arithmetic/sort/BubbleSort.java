@@ -10,7 +10,7 @@ import top.blentle.foundation.review.arithmetic.Data;
  * @description:
  * @since: 1.0
  */
-public class MaopaoSort extends Data {
+public class BubbleSort extends Data {
 
     private static Integer[] data = getData().toArray(new Integer[getData().size()]);
 
