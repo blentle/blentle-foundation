@@ -1,4 +1,4 @@
-package top.blentle.foundation.review.arithmetic;
+package top.blentle.foundation.review.arithmetic.sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;

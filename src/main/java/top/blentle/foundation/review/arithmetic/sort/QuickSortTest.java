@@ -1,7 +1,5 @@
 package top.blentle.foundation.review.arithmetic.sort;
 
-import top.blentle.foundation.review.arithmetic.Data;
-
 /**
  * @author :  renhuan
  * @email : blentle.huan.ren@gmail.com
