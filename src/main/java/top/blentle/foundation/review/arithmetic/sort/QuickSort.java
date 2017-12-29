@@ -1,10 +1,8 @@
 package top.blentle.foundation.review.arithmetic.sort;
 
-import top.blentle.foundation.review.arithmetic.Data;
-
 /**
  * @author: blentle
- * @group: rd
+ * @group: rd  快速排序的实现
  * @createdate: 2017/3/18 14:41
  * @mail: blentle.huan.ren@gmail.com
  * @description: quick  sort
@@ -16,7 +14,7 @@ public class QuickSort {
     public static void quickSort(Integer[] data, int l, int r) {
         int i = l;
         int j = r;
-        int pvoit = data[(l + r) / 2];
+        int pvoit = data[(l + r) >> 1];
         while (i <= j) {
             while (data[i] < pvoit) {
                 i++;

@@ -18,7 +18,7 @@ public abstract class Data {
 
 
     static {
-        data.addAll(Arrays.asList(12,45,458,90,87,5789,23,45,789,13,897,33456,405,768,907,876,100,78,333,597,980));
+        data.addAll(Arrays.asList(12,45,458,90,87,5789,23,45,789,13,897,33456,405,768,907,876,90,100,78,333,597,980));
     }
 
     protected static List<Integer> getData() {
