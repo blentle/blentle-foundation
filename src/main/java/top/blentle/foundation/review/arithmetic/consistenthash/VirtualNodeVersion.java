@@ -1,4 +1,4 @@
-package top.blentle.foundation.review.consistenthash;
+package top.blentle.foundation.review.arithmetic.consistenthash;
 
 import java.util.SortedMap;
 import java.util.TreeMap;
