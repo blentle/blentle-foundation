@@ -7,35 +7,32 @@ import java.util.TreeMap;
  * @author :  renhuan
  * @email : blentle.huan.ren@gmail.com
  * @time :  2018/1/2 0002
- * @description :不带虚拟节点的一致性hash算法
+ * @description : 带虚拟节点的一致性hash算法
  * @since : 1.0
  */
-public class NoVirtualNodeVersion {
+public class VirtualNodeVersion {
 
-    private static final String[] serverList = {"192.168.10.110:1000", "192.168.10.111:1000", "192.168.10.112:1000", "192.168.10.113:1000"};
+    private static final String[] realServerList = {"192.168.10.110:5000", "192.168.10.111:5000", "192.168.10.112:5000", "192.168.10.113:5000", "192.168.10.114:5000", "192.168.10.115:5000"};
 
+    private static final SortedMap<Integer, String> virtualServerMap = new TreeMap<Integer, String>();
 
-    /**
-     * key 是hash值，value是服务器ip和端口
-     */
-    private static SortedMap<Integer, String> serverMap = new TreeMap<Integer, String>();
+    private static int virtualNodeCount = 10;
 
-
-    /**
-     * 初始化
-     */
     static {
-        for (String server : serverList) {
-            int hash = getHash(server);
-            System.out.println("[" + server + "]加入集合中, 其Hash值为" + hash);
-            serverMap.put(hash, server);
+        for (String real : realServerList) {
+            for (int i = 0; i < virtualNodeCount; i++) {
+                String virtualServer = real + "#Node" + (i + 1);
+                virtualServerMap.put(getHash(virtualServer), virtualServer);
+            }
         }
     }
 
     public String getServer(String fieldValue) {
         int hash = getHash(fieldValue);
-        Integer key = serverMap.tailMap(hash).firstKey();
-        String target = serverMap.get(key);
+        Integer key = virtualServerMap.tailMap(hash).firstKey();
+        String virtual = virtualServerMap.get(key);
+        System.err.println("virtual:" + virtual);
+        String target = virtual.substring(0, virtual.indexOf("#"));
         return target;
     }
 
@@ -56,11 +53,10 @@ public class NoVirtualNodeVersion {
     }
 
     public static void main(String[] args) {
-        NoVirtualNodeVersion version = new NoVirtualNodeVersion();
+        VirtualNodeVersion version = new VirtualNodeVersion();
         String server1 = version.getServer("123456");
         String server2 = version.getServer("12345678");
         System.err.println("选取的节点是:" + server1);
         System.err.println("选取的节点是:" + server2);
     }
-
 }
