@@ -10,7 +10,7 @@ import java.util.TreeMap;
  * @description :
  * @since : 1.0
  */
-public class NoVirturalNodeVersion {
+public class NoVirtualNodeVersion {
 
     private static final String[] serverList = {"192.168.10.110:1000", "192.168.10.111:1000", "192.168.10.112:1000", "192.168.10.113:1000"};
 
@@ -56,7 +56,7 @@ public class NoVirturalNodeVersion {
     }
 
     public static void main(String[] args) {
-        NoVirturalNodeVersion version = new NoVirturalNodeVersion();
+        NoVirtualNodeVersion version = new NoVirtualNodeVersion();
         String server1 = version.getServer("123456");
         String server2 = version.getServer("12345678");
         System.err.println("选取的节点是:" + server1);
