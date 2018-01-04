@@ -2,7 +2,11 @@ package top.blentle.foundation.review.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
+import java.util.Date;
+import java.util.Scanner;
 
 /**
  * @author :  renhuan
@@ -13,9 +17,17 @@ import java.nio.channels.SocketChannel;
  */
 public class NIOClient {
     public static void main(String[] args) throws IOException {
-        SocketChannel client = SocketChannel.open();
+        SocketChannel client = SocketChannel.open(new InetSocketAddress("localhost",10000));
         client.configureBlocking(false);
-        client.connect(new InetSocketAddress("localhost",10000));
-
+        ByteBuffer bb = ByteBuffer.allocate(1024*1024);
+        Scanner scanner = new Scanner(System.in);
+        while(scanner.hasNext()) {
+            String s = scanner.next();
+            bb.put((new Date().toString() + "\n" + s).getBytes(Charset.forName("utf-8")));
+            bb.flip();
+            client.write(bb);
+            bb.clear();
+        }
+        client.close();
     }
 }
