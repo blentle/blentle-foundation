@@ -9,7 +9,7 @@ package top.blentle.foundation.review.arithmetic.tree.avl;
  */
 public class AVLTreeOperate {
     /**
-     * 左树比右树高1
+     * 左树比右树高
      */
     private static final int LH = 1;
 
@@ -19,7 +19,7 @@ public class AVLTreeOperate {
     private static final int EH = 0;
 
     /**
-     * 右树比左树高1
+     * 右树比左树高
      */
     private static final int RH = -1;
 
