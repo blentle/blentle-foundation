@@ -1,4 +1,4 @@
-package top.blentle.foundation.review.arithmetic.tree.avl;
+package top.blentle.foundation.review.arithmetic.tree.avl.m1;
 
 /**
  * @author :  renhuan
