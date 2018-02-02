@@ -15,6 +15,7 @@ public class RBTree {
     private TreeNode root;
 
     /**
+     * 根据红黑树的性质，定义树节点
      * 树节点对象
      */
     static class TreeNode {
