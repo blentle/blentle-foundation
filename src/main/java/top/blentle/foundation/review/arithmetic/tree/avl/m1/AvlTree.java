@@ -8,28 +8,37 @@ import java.util.Queue;
  * @email : blentle.huan.ren@gmail.com
  * @time :  2018/1/16 0016
  * @description : 对AVL树的操作
+ * 2月12号改造...
  * @since : 1.0
  */
 public class AvlTree {
 
+    /*
+     * 根节点
+     */
+    private TreeNode root;
+
+    /*
+     * 这里规定空树的高度是-1 ， 只有根节点的树的高度是0
+     */
     static class TreeNode {
 
-        /**
+        /*
          * 树节点的值
          */
         private int val;
 
-        /**
+        /*
          * 树的高度
          */
         private int height;
 
-        /**
+        /*
          * 左子节点
          */
         private TreeNode left;
 
-        /**
+        /*
          * 右子节点
          */
         private TreeNode right;
@@ -41,26 +50,28 @@ public class AvlTree {
     }
 
     /**
-     * 插入节点key到以node为根的树中
-     *
-     * @param node
-     * @param key
+     * 添加指定的值value的节点到根节点是root的树上
+     * @param value
      * @return
      */
-    public TreeNode add(TreeNode node, int key) {
-        //1.插入节点:
-        if (node == null)
-            return new TreeNode(key);
-        if (key < node.val) {
-            //查找左树
-            node.left = add(node.left, key);
-        } else if (key > node.val) {
-            //查找右树
-            node.right = add(node.right, key);
-        } else {
-            //do noting
-            return node;
+    public TreeNode add(int value) {
+        TreeNode t = root;
+        if (root == null)
+            return new TreeNode(value);
+        TreeNode parent = null;
+        while(t != null) {
+            parent = t;
+            if(value < t.val)
+                t = t.left;
+            else if(value > t.val)
+                t = t.right;
+            else
+                t.val = value;
         }
+        if (value < t.val)
+            t.left = new TreeNode(value);
+        else
+            t.right = new TreeNode(value);
         //2.插入后更新节点的高度
         node.height = max(height(node.left), height(node.right));
         //3.获取平衡因子，如有失衡者，则平衡树节点
@@ -118,8 +129,8 @@ public class AvlTree {
      * @param node
      * @return
      */
-    private int height(TreeNode node) {
-        return node == null ? -1 : max(height(node.left), height(node.right));
+    private static int height(TreeNode node) {
+        return node == null ? -1 : max(height(node.left), height(node.right)) + 1;
     }
 
     /**
@@ -129,7 +140,7 @@ public class AvlTree {
      * @param b
      * @return
      */
-    private int max(int a, int b) {
+    private static int max(int a, int b) {
         return a >= b ? a : b;
     }
 
@@ -186,7 +197,7 @@ public class AvlTree {
      */
     private static void preOrder(TreeNode node) {
         if (node != null) {
-            System.err.println(node.val + " - height:" + node.height);
+            System.err.println(node.val + " - height:" + height(node));
             preOrder(node.left);
             preOrder(node.right);
         }
