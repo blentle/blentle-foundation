@@ -20,11 +20,20 @@ public class Power {
 	 * @return
 	 */
 	private double power(double base, int exponent) {
+		int absExponent = Math.abs(exponent);
+		double positiveResult = powerWithNature(base, absExponent);
+		if(exponent < 0) {
+			return 1.0/positiveResult;
+		}
+		return positiveResult;
+	}
+
+	private double powerWithNature(double base, int exponent) {
 		if(exponent == 0)
 			return 1;
 		if(exponent == 1)
 			return base;
-		double result = power(base, exponent >> 1);
+		double result = powerWithNature(base, exponent >> 1);
 		result *= result;
 		if((exponent & 1) == 1)
 			result *= base;
