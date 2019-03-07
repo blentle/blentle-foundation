@@ -16,7 +16,7 @@ public class Power {
 	/**
 	 *
 	 * @param base 底数
-	 * @param exponent 幂
+	 * @param exponent 指数
 	 * @return
 	 */
 	private double power(double base, int exponent) {
