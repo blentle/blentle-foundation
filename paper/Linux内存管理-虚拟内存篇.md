@@ -33,5 +33,5 @@
 Unit的简称),然后由这个硬件把这个内存地址映射到实际的物理内存地址上.程序
 操作的这个地址称为虚拟内存地址.MMU作为CPU芯片的一部分,其实是单独的一个
 芯片.MMU把虚拟内存地址映射成物理内存地址再送到总线的过程如下图:
-[!avatar](https://upload-images.jianshu.io/upload_images/12069275-3b68728349511231.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+[!avatar](./mmu-convert01.jpg)
 
